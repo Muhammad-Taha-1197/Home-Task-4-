@@ -4,49 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scanerio_2
+namespace _24_NTU_CS_FL_1197___Library_Managment_System
 {
-    class Employee
+    class Book
     {
-        public int ID;
-        public string FullName;
-        public string Dept;
-        public double Salary;
-
-        public Employee(int id, string fullName, string dept, double salary)
-        {
-            ID = id;
-            FullName = fullName;
-            Dept = dept;
-            Salary = salary;
-        }
+        public string Name;
+        public string Writer;
+        public string BookID;
+        public double Cost;
 
         void ShowDetails()
         {
-            Console.WriteLine($"{ID,-10} | {FullName,-15} | {Dept,-10} | {Salary} PKR");
+            Console.WriteLine($"Title: {Name}\tAuthor: {Writer}\tBook ID: {BookID}\tPrice: {Cost} PKR");
         }
 
-        void RaiseSalary(double amount)
+        void CalculateDiscount(double percent)
         {
-            Salary += amount;
-            Console.WriteLine($"\nUpdated Salary after increment: {Salary} PKR");
+            double newPrice = Cost - (Cost * (percent / 100));
+            Console.WriteLine($"\nAfter applying a {percent}% discount, the final price of the book is: {newPrice} PKR");
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("====================================");
-            Console.WriteLine("        Employee Management System   ");
-            Console.WriteLine("====================================\n");
-            Console.WriteLine("Employee Details:");
-            Console.WriteLine("------------------------------------------------------------");
-            Console.WriteLine("ID         | Name            | Department | Salary");
-            Console.WriteLine("------------------------------------------------------------");
+            Console.WriteLine("        Library Management System        ");
+            Console.WriteLine("====================================");
+            Console.WriteLine("\nBook Details:");
+            Console.WriteLine("------------------------------------------------");
 
-            Employee emp1 = new Employee(1001, "Ahmed Khan", "IT", 55000);
-            emp1.ShowDetails();
-            emp1.RaiseSalary(7500);
+            Book book1 = new Book();
+            book1.Name = "Code Mastery";
+            book1.Writer = "Ali Raza";
+            book1.BookID = "B987";
+            book1.Cost = 4500;
+
+            book1.ShowDetails();
+            book1.CalculateDiscount(25);
         }
     }
 }
-
-
